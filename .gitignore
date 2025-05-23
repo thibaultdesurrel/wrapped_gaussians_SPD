@@ -1,0 +1,23 @@
+# Python files
+__pycache__/
+*.py[cod]
+*.so
+
+
+# Jupyter files
+.ipynb_checkpoints/
+.jupyter
+
+#  macOS files
+.DS_Store
+
+*.pkl
+*.pdf
+
+breizhcrops_dataset/
+expe_classification/all_results/
+expe_classification/eeg/results/
+expe_classification/hyperspectral/results/
+expe_classification/Sleep
+expe_classification/textile/textile/
+expe_estimation/estimation_diagonal.ipynb
