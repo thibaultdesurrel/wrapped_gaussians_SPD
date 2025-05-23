@@ -11,8 +11,7 @@ Thibault de Surrel, Fabien Lotte, Sylvain Chevallier and Florian Yger.
 ## How to cite 
 ```latex
 @inproceedings{deSurrelwrappedGaussians2025,
-  author    = {de Surrel, Thibault and Lotte, Fabien and Chevallier, Sylvain and Yger, Florian.
-},
+  author    = {de Surrel, Thibault and Lotte, Fabien and Chevallier, Sylvain and Yger, Florian},
   title     = {Wrapped Gaussian on the manifold of Symmetric Positive Definite Matrices},
   booktitle = {International Conference on Machine Learning},
   year      = {2025},
