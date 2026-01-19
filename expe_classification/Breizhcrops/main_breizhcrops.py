@@ -54,21 +54,20 @@ if __name__ == "__main__":
     print(all_cov.shape)
     pipelines = {}
     pipelines["MDM"] = make_pipeline(MDM(metric="riemann"))
-    # pipelines["TS_LDA_full"] = make_pipeline(TangentSpace(), LDA())
-    # pipelines["TS_QDA_full"] = make_pipeline(TangentSpace(), QDA())
+    pipelines["TS_LDA_full"] = make_pipeline(TangentSpace(), LDA())
+    pipelines["TS_QDA_full"] = make_pipeline(TangentSpace(), QDA())
     pipelines["TS_LDA_diag"] = make_pipeline(
         TangentSpace(), LDA(solver="lsqr", shrinkage=1.0)
     )
     pipelines["TS_QDA_diag"] = make_pipeline(TangentSpace(), GaussianNB())
-    # pipelines["Ho_WDA_full"] = make_pipeline(
 
-    # pipelines["Ho_WDA_full"] = make_pipeline(
-    #     Ho_WDA(optimizer=ConjugateGradient, max_iterations=300000, max_time=3600)
-    # )
-    # pipelines["He_WDA_full"] = make_pipeline(
-    #     He_WDA(optimizer=ConjugateGradient, max_iterations=300000, max_time=3600)
-    # )
-    # moyenne_riem = mean_riemann(all_cov)
+    pipelines["Ho_WDA_full"] = make_pipeline(
+        Ho_WDA(optimizer=ConjugateGradient, max_iterations=300000, max_time=3600)
+    )
+    pipelines["He_WDA_full"] = make_pipeline(
+        He_WDA(optimizer=ConjugateGradient, max_iterations=300000, max_time=3600)
+    )
+    moyenne_riem = mean_riemann(all_cov)
     pipelines["Ho_WDA_diagonal"] = make_pipeline(
         Ho_WDA(
             optimizer=ConjugateGradient,
@@ -86,11 +85,11 @@ if __name__ == "__main__":
             diagonal=True,
         )
     )
-    # Définir le KFold et le nombre de splits
+    # Define cross-validation and evaluate pipelines
     n_splits = 5
     cv = KFold(n_splits=n_splits, shuffle=True, random_state=24)
     all_results = []
-    # Évaluer chaque pipeline
+    # Evaluate each pipeline
     for name, pipeline in pipelines.items():
         print(f"Fitting the pipeline {name}")
         scores = cross_val_score(
@@ -99,7 +98,7 @@ if __name__ == "__main__":
         mean_score = np.mean(scores)
         # print(f"The mean score for subject {subject} is {mean_score}")
 
-        # Accumuler les résultats
+        # Accumulate results
         all_results.extend(
             [
                 {
